@@ -8,7 +8,7 @@
         </div>
     </div>
 
-    <form action="" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('post.store') }}" method="POST" enctype="multipart/form-data">
 
         @csrf
 
@@ -22,9 +22,11 @@
                            name="title"
                            value=""
                            placeholder="Le titre de votre article"
-                           class="form-control">
+                           class="form-control @error('title') is-invalid @enderror">
                     <small class="form-text text-muted">Quel est le titre de votre article</small>
-
+                    @error('title')
+                    <div class="invalid-feedback"> {{ $message }} </div>
+                    @enderror
 
                 </div>
 
@@ -45,22 +47,26 @@
                     <label for="content" class="form-label">Contenu</label>
                     <textarea name="content"
                               id="content"
-                              class="form-control"
+                              class="form-control @error('content') is-invalid @enderror"
                               placeholder="Contenu de votre article"
                               cols="30" rows="10"></textarea>
                     <small class="text-muted form-text">Saisissez le contenu de votre article</small>
-
+                    @error('content')
+                    <div class="invalid-feedback"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <div class="form-group mt-3">
-                    <label for="featuredImage" class="form-label">Photo d'illustration</label>
+                    <label for="photo" class="form-label">Photo d'illustration</label>
                     <input type="file"
-                           id="featuredImage"
-                           name="featuredImage"
+                           id="photo"
+                           name="photo"
                            value=""
-                           class="form-control">
+                           class="form-control @error('photo') is-invalid @enderror">
                     <small class="form-text text-muted">Choisissez l'illustration de votre article</small>
-
+                    @error('photo')
+                    <div class="invalid-feedback"> {{ $message }} </div>
+                    @enderror
                 </div>
 
                 <button type="submit" class="btn btn-primary mt-5 d-block mx-auto">Valider</button>

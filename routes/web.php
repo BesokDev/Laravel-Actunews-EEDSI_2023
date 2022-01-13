@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DefaultController;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,4 +18,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DefaultController::class, 'home'])->name('default.home');
 
+/////////////////////////
+    Route::get('/utilisateur/fake-creation', [UserController::class, 'fakeCreate']);
+/////////////////////////
+
 Route::get('/article/ajouter', [PostController::class, 'create'])->name('post.create');
+Route::post('/article/ajouter', [PostController::class, 'store'])->name('post.store');
