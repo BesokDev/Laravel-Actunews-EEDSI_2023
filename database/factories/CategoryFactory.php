@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Illuminate\Support\Str;
 
 class CategoryFactory extends Factory
 {
@@ -13,8 +14,13 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
+//        $categories = ['Politique', 'Culture', 'Santé', 'Sport', 'Économie'];
+
+        $name = $this->faker->unique->word;
+
         return [
-            //
+            'name' => $name,
+            'alias' => Str::slug($name)
         ];
     }
 }

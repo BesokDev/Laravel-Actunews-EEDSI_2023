@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\DefaultController;
+use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [DefaultController::class, 'home'])->name('default.home');
+
+Route::get('/article/ajouter', [PostController::class, 'create'])->name('post.create');
